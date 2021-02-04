@@ -275,8 +275,6 @@
     可以想一下衍生至面经的“找到链表1/3位置”怎么解决
     <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">middleNode</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *slow = head, *fast = head;</span><br><span class="line">        <span class="keyword">while</span> (fast &amp;&amp; fast-&gt;next) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (fast) fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </details>
-
-
 <details>
     <summary>234-回文链表</summary>    
     下面给出时间O(n)、空间O(1)的解法<br>
@@ -293,8 +291,6 @@
     <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">oddEvenList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *odd = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *even = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *p1 = odd, *p2 = even;</span><br><span class="line">        ListNode *p = head, *prev = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (p) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                p1-&gt;next = p;</span><br><span class="line">                p1 = p1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                p2-&gt;next = p;</span><br><span class="line">                p2 = p2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            flag = !flag;</span><br><span class="line">            prev = p;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            prev-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p1-&gt;next = even-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> odd-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </details>
 
-
-
 <details>
     <summary>86-分隔链表</summary>    
     思路与奇偶链表几乎一模一样，我直接复制的奇偶链表的代码改的
@@ -302,6 +298,16 @@
 </details>
 
 
+<p><strong>链表题相关技巧</strong></p>
+<ul>
+<li><p>双指针找中间结点、倒数第k结点什么的，掌握一下</p>
+</li>
+<li><p>一般建个新链表的时候我都是<code>ListNode *newHead = new ListNode(0)</code>，创建一个带头结点的链表，这样方便编程</p>
+</li>
+<li><p>注意边界情况，比如==”当链表为空链表或者链表只有一个结点时”==，因此一般在代码开头加上下面这句可以有效防暴毙</p>
+<p><code>if(!head || !head-&gt;next) do something</code></p>
+</li>
+</ul>
 
     </div>
     <!--文末结束语-->
