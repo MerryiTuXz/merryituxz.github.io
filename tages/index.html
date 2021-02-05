@@ -39,6 +39,14 @@
     
     
     
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+        
+    
+
+    
     
     <title>
         
@@ -243,6 +251,23 @@
         
     </div>
 </v-card>
+
+    <v-card class="comment-card elevation-2">
+        <v-tabs v-model="commentTab"  id="comment-tabs" active-class="active-comment-tab">
+            
+                <v-tab><span id="comment-tab-0">gitalk</span></v-tab>
+            
+        </v-tabs>
+        <v-tabs-items v-model="commentTab" id="tabs-content" data=eyJ1c2UiOlsiZ2l0YWxrIl0sImdpdGFsa19jbGllbnRfaWQiOiI3MzhhODk4NzU4YTQxYzZlMDhlOCIsImdpdGFsa19jbGllbnRfc2VjcmV0IjoiMmM4NGM1YmQ5N2FiOTJmOTYyMmFkNzg4MzY5MDQ2M2QwNmM4NGZiNSIsImdpdGFsa19yZXBvIjoiQmxvZ1JlbWFya3MiLCJnaXRhbGtfb3duZXIiOiJNZXJyeWlUdVh6IiwiZ2l0YWxrX3NpZF90eXBlIjoibGVldGNvZGV3aXRocmliIiwiZ2l0YWxrX2Rpc3RyYWN0aW9uRnJlZU1vZGUiOnRydWUsImRpc3F1c19zaG9ydG5hbWUiOm51bGwsImxpdmVyZV9kYXRhX3VpZCI6bnVsbCwidmFsaW5lX2xlYW5jbG91ZF9hcHBfaWQiOm51bGwsInZhbGluZV9sZWFuY2xvdWRfYXBwX2tleSI6bnVsbCwidmFsaW5lX29wdGlvbiI6bnVsbCwiY2hhbmd5YW5fYXBwX2lkIjpudWxsLCJjaGFuZ3lhbl9hcHBfa2V5IjpudWxsLCJjaGFuZ3lhbl9zaWRfdHlwZSI6bnVsbH0= >
+            
+                <v-tab-item eager=true>
+                    
+                        <div id="gitalk-container"></div>
+                    
+                </v-tab-item>
+            
+        </v-tabs-items>
+    </v-card>
         
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>
