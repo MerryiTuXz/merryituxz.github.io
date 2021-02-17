@@ -230,7 +230,7 @@
     </span>
     <span>
       <span class="iconfont icon-calendar-check"></span>
-      Edited on:&nbsp;2021-02-04
+      Edited on:&nbsp;2021-02-17
     </span>
     <span>
       <span class="iconfont icon-folder"></span>
@@ -284,27 +284,39 @@
   
   
   
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/leetcode/ >leetcode</a>
+      </i>
+    
+  </div>
+
   
   <div class="mdui-card-content mdui-typo mdui-p-x-4">
-    <h2 id="今天还是链表环节"><a href="#今天还是链表环节" class="headerlink" title="今天还是链表环节~"></a>今天还是链表环节~</h2><p><strong>questions</strong></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/middle-of-the-linked-list/">876. 链表的中间结点</a></p>
+    <h2 id="今天还是链表环节"><a href="#今天还是链表环节" class="headerlink" title="今天还是链表环节~"></a>今天还是链表环节~</h2><h4 id="questions"><a href="#questions" class="headerlink" title="questions"></a><strong>questions</strong></h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/middle-of-the-linked-list/">876. 链表的中间结点</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-linked-list/">234. 回文链表</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/odd-even-linked-list/">328. 奇偶链表</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/partition-list/">86. 分隔链表</a></p>
-<p><strong>tips</strong></p>
-<ul>
+<br>
+
+<h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a><strong>tips</strong></h4><ul>
 <li><p><code>876.链表的中间结点</code>主要是快慢指针的思想，这个可能会在其他题目中作为常规操作出现，例如归并排序链表</p>
 <p>面经中有一题是“如何找到链表的1/3处”，也是类似思想的体现</p>
 </li>
+</ul>
+<ul>
 <li><p><code>234.回文链表</code>如果要做到O(n)时间、O(1)空间的话，个人觉得难度起码是medium而不是easy</p>
 <p>（不过用栈什么的当然也可以过啦）</p>
 <p>O(n)时间、O(1)空间的方法需要综合<code>206.反转链表</code>和<code>876.链表的中间结点</code>这两题的操作</p>
 </li>
-<li><p><code>328.奇偶链表</code>和<code>86.分隔链表</code>其实挺简单的，放心大胆做，并且思路极其类似</p>
-</li>
 </ul>
-<p><strong>answers</strong></p>
-<details>
+<ul>
+<li><code>328.奇偶链表</code>和<code>86.分隔链表</code>其实挺简单的，放心大胆做，并且思路极其类似</li>
+</ul>
+<br>
+
+<h4 id="answers"><a href="#answers" class="headerlink" title="answers"></a><strong>answers</strong></h4><details>
     <summary>876-链表的中间结点</summary>    
     维持两个指针，一个slow，一个fast。每次让slow走一步，fast走两步，当fast走到头的时候slow肯定是在链表的中间位置<br>
     可以想一下衍生至面经的“找到链表1/3位置”怎么解决
@@ -331,10 +343,9 @@
     思路与奇偶链表几乎一模一样，我直接复制的奇偶链表的代码改的
     <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">partition</span><span class="params">(ListNode* head, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        ListNode *lessThanX = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *greaterThanX = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *p1 = lessThanX, *p2 = greaterThanX;</span><br><span class="line">        ListNode *p = head, *prev = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span> (p) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p-&gt;val &lt; x) &#123;</span><br><span class="line">                p1-&gt;next = p;</span><br><span class="line">                p1 = p1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                p2-&gt;next = p;</span><br><span class="line">                p2 = p2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = p;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            prev-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p1-&gt;next = greaterThanX-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> lessThanX-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </details>
+<br>
 
-
-<p><strong>链表题相关技巧</strong></p>
-<ul>
+<h4 id="链表题相关技巧"><a href="#链表题相关技巧" class="headerlink" title="链表题相关技巧"></a><strong>链表题相关技巧</strong></h4><ul>
 <li><p>双指针找中间结点、倒数第k结点什么的，掌握一下</p>
 </li>
 <li><p>一般建个新链表的时候我都是<code>ListNode *newHead = new ListNode(0)</code>，创建一个带头结点的链表，这样方便编程</p>
@@ -377,7 +388,7 @@
     <ul class="mdui-menu" id="toc">
       <li class="mdui-menu-item">
         <a href="/2021/02/04/2021-02-05-leetcode/" id="toc-header" class="mdui-ripple">Table of Contents</a>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8A%E5%A4%A9%E8%BF%98%E6%98%AF%E9%93%BE%E8%A1%A8%E7%8E%AF%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">今天还是链表环节~</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8A%E5%A4%A9%E8%BF%98%E6%98%AF%E9%93%BE%E8%A1%A8%E7%8E%AF%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">今天还是链表环节~</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#questions"><span class="toc-number">1.0.1.</span> <span class="toc-text">questions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tips"><span class="toc-number">1.0.2.</span> <span class="toc-text">tips</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#answers"><span class="toc-number">1.0.3.</span> <span class="toc-text">answers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E9%A2%98%E7%9B%B8%E5%85%B3%E6%8A%80%E5%B7%A7"><span class="toc-number">1.0.4.</span> <span class="toc-text">链表题相关技巧</span></a></li></ol></li></ol></li></ol>
       </li>
     </ul>
   </div>
